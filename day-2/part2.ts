@@ -1,16 +1,14 @@
-import fs from 'fs';
-
-const input = fs.readFileSync('input.txt', 'utf8')
+const input = Deno.readTextFileSync('input.txt')
     .split('\n')
     .map(el => el.split(' ').map(Number));
 
 let safeReports = 0;
 
-for (let report of input) {
+for (const report of input) {
     let safeWithElRemoved = false;
 
     for (let i = 0; i < report.length; i++) {
-        let splicedReport = report.toSpliced(i, 1);
+        const splicedReport = report.toSpliced(i, 1);
 
         if (isSafe(splicedReport)) safeWithElRemoved = true;
     }
@@ -18,7 +16,7 @@ for (let report of input) {
     if (isSafe(report) || safeWithElRemoved) safeReports++;
 }
 
-function isSafe(report: number[][]) {
+function isSafe(report: number[]) {
     let safe = true;
 
     if (report[0] > report[1]) {

@@ -1,6 +1,4 @@
-import fs from 'fs';
-
-const input = fs.readFileSync('input.txt', 'utf8')
+const input = Deno.readTextFileSync('input.txt')
     .split('\n')
     .map(el => el.split(' ').map(Number));
 
