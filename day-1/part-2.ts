@@ -1,5 +1,5 @@
 const input = Deno.readTextFileSync('input.txt')
-                .split('\r\n')
+                .split('\n')
                 .map(el => el.split('   '));
 
 const left = [], right = [];
