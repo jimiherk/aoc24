@@ -8,8 +8,8 @@ for (let row = 0; row < input.length; row++) {
 
         if (row == 0 || column == 0 || row == input.length - 1 || column == input[0].length - 1) continue;
 
-        let neighbours1 = [input[row-1][column-1], input[row+1][column+1]];
-        let neighbours2 = [input[row+1][column-1], input[row-1][column+1]];
+        const neighbours1 = [input[row-1][column-1], input[row+1][column+1]],
+            neighbours2 = [input[row+1][column-1], input[row-1][column+1]];
 
         if (neighbours1.includes("M") && neighbours1.includes("S") && neighbours2.includes("M") && neighbours2.includes("S")) foundX++;
     }
