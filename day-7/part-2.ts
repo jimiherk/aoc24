@@ -19,6 +19,8 @@ const evaluateLeftToRight = (numbers: string[], operators: string[]): number => 
             result += num;
         } else if (operators[i] === '*') {
             result *= num;
+        } else if (operators[i] === '|') {
+            result = parseInt(result.toString() + num.toString());
         }
     }
     return result;
@@ -26,9 +28,9 @@ const evaluateLeftToRight = (numbers: string[], operators: string[]): number => 
 
 for (const line of input) {
     let valid = false;
-    let combos = Array.from(Array(Math.pow(2, line[1].length - 1)).keys())
-        .map(el => el.toString(2).padStart(line[1].length - 1, '0'))
-        .map(el => el.replaceAll('0', '+').replaceAll('1', '*').split(''));
+    let combos = Array.from(Array(Math.pow(3, line[1].length - 1)).keys())
+        .map(el => el.toString(3).padStart(line[1].length - 1, '0'))
+        .map(el => el.replaceAll('0', '+').replaceAll('1', '*').replaceAll('2', '|').split(''));
 
     for (const combo of combos) {
         if (evaluateLeftToRight(line[1], combo) == line[0]) valid = true;
