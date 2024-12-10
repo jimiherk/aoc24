@@ -29,8 +29,6 @@ for (const [name, locations] of antennas.entries()) {
             for (const antinode of antinodes) {
                 input[antinode[0]][antinode[1]] = '#';
             }
-
-            Deno.writeTextFileSync('res.txt', Deno.readTextFileSync('res.txt') + '\n\n' + input.map(el => el.join('')).join('\n'));
         }
     }
 }
